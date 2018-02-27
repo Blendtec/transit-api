@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body } from '@nestjs/common';
 import { ProductRegistration } from '../models/product-registration.entity';
 import { ProductRegistrationService } from '../services/product-registration.service';
 import { CreateProductRegistrationDto } from '../models/create-product-registration.dto';
+import { plainToClass } from 'class-transformer';
 
 @Controller('product-registration')
 export class ProductRegistrationController {
@@ -14,11 +15,8 @@ export class ProductRegistrationController {
 
 	@Post()
 	async create( @Body() createProductRegistrationDto: CreateProductRegistrationDto) {
-		const newEntry = Object.assign({}, createProductRegistrationDto, {
-			createdOn: new Date().toISOString(),
-			modifiedOn: new Date().toISOString(),
-		});
-		await this.productRegistrationService.create(newEntry);
+		const productRegistration = plainToClass(ProductRegistration, createProductRegistrationDto);
+		await this.productRegistrationService.create(productRegistration);
 	}
 
 }
