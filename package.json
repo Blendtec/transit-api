@@ -9,8 +9,7 @@
     "prestart:prod": "tsc",
     "start:prod": "node dist/main.js",
     "test": "jest --config ./jest.config.json --coverage",
-    "posttest": "codecov -f coverage/*.json",
-    "ci": "npm run test"
+    "posttest": "codecov -f coverage/*.json"
   },
   "dependencies": {
     "@nestjs/common": "^4.5.9",
