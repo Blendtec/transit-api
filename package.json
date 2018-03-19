@@ -5,9 +5,10 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "node build/main.js",
+    "start": "node main.js",
     "serve": "nodemon index.js",
     "test": "jest --config ./jest.config.json --coverage",
+    "pretest": "tsc",
     "posttest": "codecov -f coverage/*.json",
     "dist": "sh ./scripts/dist.sh"
   },
