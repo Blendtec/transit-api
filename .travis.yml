@@ -9,3 +9,18 @@ node_js:
 - stable
 matrix:
   fast_finish: true
+env:
+  - ELASTIC_BEANSTALK_LABEL=TRAVIS_BUILD_NUMBER
+before_deploy:
+  - ./scripts/dist.sh
+deploy:
+  skip_cleanup: true
+  provider: elasticbeanstalk
+  access_key_id: $AWS_KEY
+  secret_access_key: $AWS_SECRET
+  region: $AWS_REGION
+  app: $EB_APP
+  env: $STAGE_EB_ENV
+  bucket_name: $STAGE_BUCKET
+  on:
+    branch: stage
