@@ -7,8 +7,13 @@ node_js:
 - '6'
 matrix:
   fast_finish: true
+cache:
+  directories:
+  - node_modules
 env:
   - ELASTIC_BEANSTALK_LABEL=$TRAVIS_BUILD_NUMBER
+after_success:
+  - "./node_modules/.bin/codecov"
 before_deploy:
   - ./scripts/dist.sh
 deploy:
