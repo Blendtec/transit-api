@@ -10,7 +10,7 @@ node_js:
 matrix:
   fast_finish: true
 env:
-  - ELASTIC_BEANSTALK_LABEL=TRAVIS_BUILD_NUMBER
+  - ELASTIC_BEANSTALK_LABEL=$TRAVIS_BUILD_NUMBER
 before_deploy:
   - ./scripts/dist.sh
 deploy:
