@@ -10,7 +10,7 @@ export class MetadataStorageAndValidation {
     private async checkRecaptcha(value) {
         if (!value || !value[this.fieldName]) {
             return new Promise((resolve, reject) => {
-                reject(new Error('No Captcha given'));
+                resolve({});
             });
         } else {
             const Recaptcha = require('recaptcha-verify');
