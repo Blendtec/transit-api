@@ -15,9 +15,8 @@ export class ValidationPipe implements PipeTransform<any> {
       const object = plainToClass(metatype, value);
 
       const errors = await validate(object);
-      const captcha = await getFromContainer(MetadataStorageAndValidation).validateMetadata(object.constructor.name, value);
 
-      if (errors.length > 0 || !captcha) {
+      if (errors.length > 0) {
           throw new BadRequestException('Validation failed');
       }
       return value;
