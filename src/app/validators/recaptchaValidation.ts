@@ -1,4 +1,5 @@
 import {ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments} from "class-validator";
+import * as Recaptcha from 'recaptcha-verify';
 
 @ValidatorConstraint({ name: "IsCaptcha", async: true })
 export class IsCaptcha implements ValidatorConstraintInterface {
@@ -9,7 +10,6 @@ export class IsCaptcha implements ValidatorConstraintInterface {
                 resolve({});
             });
         } else {
-            const Recaptcha = require('recaptcha-verify');
             const recaptcha = new Recaptcha({
                 secret: process.env.CAPTCHA_SECRET,
                 verbose: true

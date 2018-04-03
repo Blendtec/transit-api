@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, BadRequestException } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { ProductRegistration } from '../models/product-registration.entity';
 import { ProductRegistrationService } from '../services/product-registration.service';
 import { CreateProductRegistrationDto } from '../models/create-product-registration.dto';
