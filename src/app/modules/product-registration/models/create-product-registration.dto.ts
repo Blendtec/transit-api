@@ -1,4 +1,5 @@
-import { IsDateString, IsEmail, IsMobilePhone, IsNotEmpty, IsString } from 'class-validator';
+import { IsDateString, IsEmail, IsMobilePhone, IsNotEmpty, IsString, Validate } from 'class-validator';
+import { IsCaptcha } from '../../../validators/iscaptcha.validator';
 
 export class CreateProductRegistrationDto {
 	@IsString()
@@ -52,7 +53,7 @@ export class CreateProductRegistrationDto {
 
 	wantsOffers: boolean;
 
-	//@IsCaptcha()
+	@Validate(IsCaptcha)
 	@IsNotEmpty()
 	captcha: string;
 

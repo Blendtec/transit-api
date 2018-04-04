@@ -15,8 +15,9 @@ export class ProductRegistrationController {
 
 	@Post()
 	async create( @Body() createProductRegistrationDto: CreateProductRegistrationDto) {
-		const productRegistration = plainToClass(ProductRegistration, createProductRegistrationDto);
-		await this.productRegistrationService.create(productRegistration);
+        const productRegistration = plainToClass(ProductRegistration, createProductRegistrationDto);
+        await this.productRegistrationService.create(productRegistration);
+
 	}
 
 }
