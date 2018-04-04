@@ -4,6 +4,15 @@ import * as Recaptcha from 'recaptcha-verify';
 @ValidatorConstraint({ name: "IsCaptcha", async: true })
 export class IsCaptcha implements ValidatorConstraintInterface {
 
+    private secret: string;
+    constructor (inSecret: string = null) {
+        if (!inSecret) {
+            this.secret = process.env.CAPTCHA_SECRET;
+        } else {
+            this.secret = inSecret;
+        }
+    }
+
 	private async checkRecaptcha(value) {
         if (!value) {
             return new Promise((resolve, reject) => {
@@ -11,7 +20,7 @@ export class IsCaptcha implements ValidatorConstraintInterface {
             });
         } else {
             const recaptcha = new Recaptcha({
-                secret: process.env.CAPTCHA_SECRET,
+                secret: this.secret,
                 verbose: true
             });
             return new Promise((resolve, reject) => {
@@ -37,7 +46,7 @@ export class IsCaptcha implements ValidatorConstraintInterface {
     	}
     }
 
-    defaultMessage(args: ValidationArguments) {
+    defaultMessage(args: ValidationArguments): string {
         return "Captcha Validation failed";
     }
 
