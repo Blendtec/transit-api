@@ -45,10 +45,10 @@ export class CreateProductRegistrationDto {
 
 	purchaseOther: string;
 
-	// @IsSerialPrefix()
+	// @Validate(SerialPrefix)
 	serialPrefix: string;
 
-	// @IsSerialSuffix()
+	// @Validate(SerialSuffix)
 	serialSuffix: string;
 
 	wantsOffers: boolean;
