@@ -8,5 +8,5 @@ export const productRegistrationProviders = [
 		useFactory: (connection: Connection) => connection.getRepository(ProductRegistration),
 		inject: ['DbConnectionToken'],
 	},
-	ProductRegistrationService
+	ProductRegistrationService,
 ];

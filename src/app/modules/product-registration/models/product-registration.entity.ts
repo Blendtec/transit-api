@@ -62,7 +62,6 @@ export class ProductRegistration {
 	@UpdateDateColumn()
 	modfiedOn: string;
 
-
 	@Column({default: false})
 	processed: boolean;
 }

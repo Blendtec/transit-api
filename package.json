@@ -8,6 +8,7 @@
     "start": "node build/main.js",
     "serve": "nodemon index.js",
     "test": "jest --config ./jest.config.json --coverage",
+    "lint": "tslint -c tslint.json src/**/*.ts",
     "pretest": "tsc",
     "posttest": "codecov -f coverage/*.json",
     "dist": "sh ./scripts/dist.sh"
@@ -42,6 +43,7 @@
     "nodemon": "^1.17.1",
     "ts-jest": "^22.4.0",
     "ts-node": "^4.1.0",
+    "tslint": "^5.9.1",
     "typescript": "^2.6.2"
   },
   "config": {

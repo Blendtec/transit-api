@@ -7,6 +7,6 @@ import { ProductRegistrationController } from './controllers/product-registratio
 	imports: [DatabaseModule],
 	components: [...productRegistrationProviders],
 	exports: [...productRegistrationProviders],
-	controllers: [ProductRegistrationController]
+	controllers: [ProductRegistrationController],
 })
 export class ProductRegistrationModule {}
