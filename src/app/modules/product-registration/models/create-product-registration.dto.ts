@@ -1,5 +1,5 @@
 import { IsDateString, IsEmail, IsNotEmpty, IsString, Validate } from 'class-validator';
-import { IsCaptcha } from '../../../validators/iscaptcha.validator';
+import { IsCaptcha } from '../../common/validators';
 
 export class CreateProductRegistrationDto {
 	@IsString()
