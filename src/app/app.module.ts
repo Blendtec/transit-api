@@ -1,10 +1,11 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
+import { Module }                    from '@nestjs/common';
+import { AppController }             from './app.controller';
 import { ProductRegistrationModule } from './modules/product-registration';
-import { CommonModule } from './modules/common/common.module';
+import { CommonModule }              from './modules/common/common.module';
+import { SerialNumberModule }        from './modules/serial-number';
 
 @Module({
-  imports: [ProductRegistrationModule, CommonModule],
+  imports: [ProductRegistrationModule, SerialNumberModule, CommonModule],
   controllers: [AppController],
   components: [],
 })
