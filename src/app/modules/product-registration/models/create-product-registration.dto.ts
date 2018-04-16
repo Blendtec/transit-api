@@ -1,4 +1,5 @@
-import { IsDateString, IsEmail, IsMobilePhone, IsNotEmpty, IsString } from 'class-validator';
+import { IsDateString, IsEmail, IsNotEmpty, IsString, Validate } from 'class-validator';
+import { IsCaptcha } from '../../common/validators';
 
 export class CreateProductRegistrationDto {
 	@IsString()
@@ -44,15 +45,15 @@ export class CreateProductRegistrationDto {
 
 	purchaseOther: string;
 
-	//@IsSerialPrefix()
+	// @Validate(SerialPrefix)
 	serialPrefix: string;
 
-	//@IsSerialSuffix()
+	// @Validate(SerialSuffix)
 	serialSuffix: string;
 
 	wantsOffers: boolean;
 
-	//@IsCaptcha()
+	@Validate(IsCaptcha)
 	@IsNotEmpty()
 	captcha: string;
 

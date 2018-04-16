@@ -14,9 +14,6 @@ describe('ProductRegistrationService', () => {
 		newModel = {};
 		repoMock = {
 			save: jest.fn().mockReturnValue(newModel),
-			// find: jest.fn().mockReturnThis(),
-			// exec: jest.fn(),
-			// save: jest.fn(),
 		};
 		module = await Test.createTestingModule({
 			components: [
@@ -32,19 +29,17 @@ describe('ProductRegistrationService', () => {
 		expect(service).toBeDefined();
 	});
 
-
 	describe('create', () => {
 
-		it('should call save on repository',  async() => {
+		it('should call save on repository', async () => {
 			await service.create(dto);
 			expect(repoMock.save).toHaveBeenCalledWith(dto);
 		});
 
-		it('should return newly created registration', async() => {
-			let result = await service.create(dto)
+		it('should return newly created registration', async () => {
+			const result = await service.create(dto);
 			expect(result).toEqual(newModel);
 		});
-
 
 	});
 });
