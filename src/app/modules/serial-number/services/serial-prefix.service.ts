@@ -1,6 +1,6 @@
 import { Component, Inject } from '@nestjs/common';
-import { Repository }        from 'typeorm';
-import { SerialPrefix }      from '../models/serial-prefix.entity';
+import { Repository } from 'typeorm';
+import { SerialPrefix } from '../models/serial-prefix.entity';
 
 @Component()
 export class SerialPrefixService {

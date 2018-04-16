@@ -1,7 +1,7 @@
-import { Module }                 from '@nestjs/common';
-import { DatabaseModule }         from '../database';
+import { Module } from '@nestjs/common';
+import { DatabaseModule } from '../database';
 import { SerialNumberController } from './controllers/serial-number.controller';
-import { serialNumberProviders }  from './serial-number.providers';
+import { serialNumberProviders } from './serial-number.providers';
 
 @Module({
     imports: [DatabaseModule],

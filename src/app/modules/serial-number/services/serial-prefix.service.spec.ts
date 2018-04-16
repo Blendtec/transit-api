@@ -1,5 +1,5 @@
-import { Test }                from '@nestjs/testing';
-import { TestingModule }       from '@nestjs/testing/testing-module';
+import { Test } from '@nestjs/testing';
+import { TestingModule } from '@nestjs/testing/testing-module';
 import { SerialPrefixService } from './serial-prefix.service';
 
 describe('SerialPrefixService', () => {
