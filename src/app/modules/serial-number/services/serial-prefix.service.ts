@@ -8,7 +8,6 @@ export class SerialPrefixService {
     }
 
     async findAll(): Promise<SerialPrefix[]> {
-    	console.log('find all fired');
         return await this.serialPrefixRepository.find();
     }
 }

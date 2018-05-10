@@ -4,7 +4,7 @@ import { ProductRegistrationModule } from './modules/product-registration';
 import { CommonModule } from './modules/common/common.module';
 import { SerialNumberModule } from './modules/serial-number';
 import { DatabaseModule } from './modules/database';
-import { Validator, ValidationPipe } from 'class-validator';
+import { Validator } from 'class-validator';
 import { SerialPrefix } from './modules/common/validators/serial-prefix.validator';
 
 @Module({

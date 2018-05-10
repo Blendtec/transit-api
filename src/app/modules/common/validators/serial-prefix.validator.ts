@@ -6,26 +6,32 @@ import { Connection } from 'typeorm';
 @Component()
 export class SerialPrefix implements ValidatorConstraintInterface {
 
-	constructor(@Inject('DbConnectionToken') private readonly connection: Connection) {
-		console.log('connection here');
-		console.log(this.connection);
-	}
+	constructor(@Inject('DbConnectionToken') private readonly connection: Connection) {}
 
-	private async checkSerial(value) {
+	private async checkSerial(value, args: ValidationArguments) {
 		if (!value) {
 			return new Promise(resolve => {
-				resolve({});
+				resolve(false);
 			});
 		} else {
-			console.log(serialPrefixService.findAll());
+			const out = await this.connection.getRepository(args.constraints[0]).find({
+				'prefix': value
+			});
+			if (out.length > 0) {
+				return new Promise(resolve => {
+					resolve(true);
+				});
+			} else {
+				return new Promise(resolve => {
+					resolve(false);
+				});
+			}
 		}
 	}
 
 	async validate(text: string, args: ValidationArguments) {
-		const out = await this.connection.getRepository(args.constraints[0]).findAll();
-		console.log(out);
-		const result: any = await this.checkSerial(text);
-		if (result && result.success) {
+		const result: any = await this.checkSerial(text, args);
+		if (result) {
 			return true;
 		} else {
 			return false;
