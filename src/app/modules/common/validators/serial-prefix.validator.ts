@@ -7,17 +7,15 @@ import { SerialPrefixService } from '../../serial-number/services/serial-prefix.
 @Component()
 export class SerialPrefix implements ValidatorConstraintInterface {
 
-	private serialPrefixService;
+	constructor(@Inject('DbConnectionToken') private readonly connection: Connection) {}
 
-	constructor(@Inject('DbConnectionToken') private readonly connection: Connection) {
-		this.serialPrefixService = new SerialPrefixService();
-	}
-
-	private async checkSerial(value) {
+	private async checkSerial(value, args: ValidationArguments) {
 		if (!value) {
 			return false;
 		} else {
-			const out = await this.serialPrefixService.findPrefix(value);
+			const out = await this.connection.getRepository(args.constraints[0]).find({
+				'prefix': value
+			});
 			if (out.length > 0) {
 				return true;
 			} else {
@@ -27,8 +25,7 @@ export class SerialPrefix implements ValidatorConstraintInterface {
 	}
 
 	async validate(text: string, args: ValidationArguments) {
-		this.serialPrefixService.setConnection(this.connection.getRepository(args.constraints[0]));
-		const result: any = await this.checkSerial(text);
+		const result: any = await this.checkSerial(text, args);
 		if (result) {
 			return true;
 		} else {

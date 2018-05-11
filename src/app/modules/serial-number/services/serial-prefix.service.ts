@@ -8,10 +8,6 @@ export class SerialPrefixService {
     constructor(@Inject('SerialPrefixRepositoryToken') private readonly serialPrefixRepository: Repository<SerialPrefix>) {
     }
 
-    setConnection(connection: Connection) {
-    	this.serialPrefixRepository = connection;
-    }
-
     async findAll(): Promise<SerialPrefix[]> {
         return await this.serialPrefixRepository.find();
     }

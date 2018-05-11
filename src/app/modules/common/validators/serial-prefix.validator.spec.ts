@@ -1,4 +1,4 @@
-import { SerialPrefix } from './serial-prefix.service';
+import { SerialPrefix } from './serial-prefix.validator';
 import { SerialPrefix as SP } from '../../serial-number/models/serial-prefix.entity';
 
 describe('serialPrefix', () => {
