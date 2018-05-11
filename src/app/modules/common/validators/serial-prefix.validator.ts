@@ -1,41 +1,43 @@
 import { ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments } from 'class-validator';
 import { Inject, Component } from '@nestjs/common';
 import { Connection } from 'typeorm';
+import { SerialPrefixService } from '../../serial-number/services/serial-prefix.service';
 
 @ValidatorConstraint({name: 'SerialPrefix', async: true})
 @Component()
 export class SerialPrefix implements ValidatorConstraintInterface {
 
-	constructor(@Inject('DbConnectionToken') private readonly connection: Connection) {}
+	private serialPrefixService;
 
-	private async checkSerial(value, args: ValidationArguments) {
+	constructor(@Inject('DbConnectionToken') private readonly connection: Connection) {
+		this.serialPrefixService = new SerialPrefixService();
+	}
+
+	private async checkSerial(value) {
 		if (!value) {
-			return new Promise(resolve => {
-				resolve(false);
-			});
+			return false;
 		} else {
-			const out = await this.connection.getRepository(args.constraints[0]).find({
-				'prefix': value
-			});
+			const out = await this.serialPrefixService.findPrefix(value);
 			if (out.length > 0) {
-				return new Promise(resolve => {
-					resolve(true);
-				});
+				return true;
 			} else {
-				return new Promise(resolve => {
-					resolve(false);
-				});
+				return false;
 			}
 		}
 	}
 
 	async validate(text: string, args: ValidationArguments) {
-		const result: any = await this.checkSerial(text, args);
+		this.serialPrefixService.setConnection(this.connection.getRepository(args.constraints[0]));
+		const result: any = await this.checkSerial(text);
 		if (result) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+	defaultMessage(args: ValidationArguments): string {
+		return 'serial prefix validation failed';
 	}
 
 }

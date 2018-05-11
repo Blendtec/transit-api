@@ -54,7 +54,7 @@ export class CreateProductRegistrationDto {
 
 	wantsOffers: boolean;
 
-	@Validate(IsCaptcha)
+	//@Validate(IsCaptcha)
 	@IsNotEmpty()
 	captcha: string;
 
