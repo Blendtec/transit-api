@@ -9,12 +9,7 @@ export class SerialPrefixService {
     }
 
     async findAll(): Promise<SerialPrefix[]> {
-        const repo = await this.serialPrefixRepository.find()
-        let out = [];
-        for (let i = 0; i < repo.length; i++) {
-            out.push(repo[i].prefix);
-        }
-        return out;
+        return await this.serialPrefixRepository.find();
     }
 
     async findPrefix(value): Promise<SerialPrefix[]> {
