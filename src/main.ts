@@ -8,7 +8,7 @@ async function bootstrap() {
 	useContainer(app.select(ApplicationModule), { fallback: true });
 	app.useGlobalPipes(new ValidationPipe());
 	app.use((req, res, next) => {
-		if (req.headers.origin === process.env.API_LOCATION && req.method === 'POST') {
+		if (req.headers.origin === process.env.API_LOCATION) {
 			res.header('Access-Control-Allow-Origin', req.headers.origin);
 			res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 		} else if (req.method === 'POST') {

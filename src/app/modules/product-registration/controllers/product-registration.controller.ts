@@ -8,11 +8,6 @@ import { plainToClass } from 'class-transformer';
 export class ProductRegistrationController {
 	constructor(private readonly productRegistrationService: ProductRegistrationService) {}
 
-	@Get()
-	findAll(): Promise<ProductRegistration[]> {
-		return this.productRegistrationService.findAll();
-	}
-
 	@Post()
 	async create( @Body() createProductRegistrationDto: CreateProductRegistrationDto) {
         const productRegistration = plainToClass(ProductRegistration, createProductRegistrationDto);
