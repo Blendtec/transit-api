@@ -10,7 +10,7 @@ export class ProductRegistrationController {
 
 	@Get()
 	findAll(): Promise<ProductRegistration[]> {
-		return this.productRegistrationService.findAll();
+		return '';
 	}
 
 	@Post()
