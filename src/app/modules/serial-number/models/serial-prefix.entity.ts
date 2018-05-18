@@ -8,4 +8,7 @@ export class SerialPrefix {
 
     @Column({length: 60})
     prefix: string;
+
+    @Column({length: 30})
+    recid: string;
 }
