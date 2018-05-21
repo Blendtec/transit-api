@@ -16,7 +16,6 @@ export class IsCaptcha implements ValidatorConstraintInterface {
 
 	private async checkRecaptcha(value) {
 		if (!value) {
-
 			return new Promise(resolve => {
 				resolve({});
 			});
