@@ -22,7 +22,6 @@ export class CreateProductRegistrationDto {
 	city: string;
 
 	@IsString()
-	@IsNotEmpty()
 	state: string;
 
 	@IsString()
