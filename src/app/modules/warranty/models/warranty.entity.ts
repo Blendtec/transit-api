@@ -75,4 +75,11 @@ export class Warranty {
 	@Column({default: false})
 	processed: boolean;
 
+	serialnumber: string; //image
+
+	jarnumber: string; //image
+
+	problem: string; //image
+
+	receiptPhoto: string; //image
 }
