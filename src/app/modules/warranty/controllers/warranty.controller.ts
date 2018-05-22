@@ -16,10 +16,10 @@ export class WarrantyController {
         	"Blendtec Warranty Claim Received",
         	this.warrantyBody(warranty),
         	[
-        	{path: warranty['serialnumber'], name: 'serialNumber'},
-        	{path: warranty['jarnumber'], name: 'jarnumber'},
-        	{path: warranty['problem'], name: 'problem'},
-        	{path: warranty['receiptPhoto'], name: 'receiptPhoto'}
+        	{path: warranty.serialnumber, name: 'serialNumber'},
+        	{path: warranty.jarnumber, name: 'jarnumber'},
+        	{path: warranty.problem, name: 'problem'},
+        	{path: warranty.receiptPhoto, name: 'receiptPhoto'}
         	]);
         this.emailService.sendEmail(warranty['email_address'], 
         	"Blendtec Warranty Claim Received",

@@ -3,8 +3,3 @@ export interface EmailAttachment {
 	path: string;
 	filename: string;
 }
-
-export interface EmailPreAttachment {
-	path: string;
-	name: string;
-}

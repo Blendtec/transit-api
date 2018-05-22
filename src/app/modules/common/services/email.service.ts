@@ -33,12 +33,13 @@ export class EmailService {
 
 	sendEmail(email: string, subject: string, emailBodyHTML: string, inAttachments: EmailPreAttachment[]) {
 		let attachments = [];
-		for (let i = 0; i < inAttachments.length; i++) {
-			let out = this.attachmentFromString(inAttachments[i]);
+		inAttachments.map(x => {
+			let out = this.attachmentFromString(x);
 			if (out) {
 				attachments.push(out);
 			}
-		}	
+		});
+
 		const textOnly = emailBodyHTML.replace(/<[^>]+>/g, '');
 		const mailOptions = {
 		    from: 'noreply@blendtec.com',
