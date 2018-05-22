@@ -1,5 +1,7 @@
 import { Component, Inject } from '@nestjs/common';
 import * as AWS from 'aws-sdk';
+import * as mailcomposer from 'mailcomposer';
+import { EmailAttachment, EmailPreAttachment } from '../models/';
 
 @Component()
 export class EmailService {
@@ -11,60 +13,53 @@ export class EmailService {
 		});
 	}
 
-	generateFileFromString(base64String: string) {
-		let match = base64String.match(/\/[^;]*;/);
-		if (match && typeof match === "object" && typeof match[0] === "string") {
-			return {
-				contents: base64String,
-				contentType: match[0].slice(0, -1)
-			};
-		} else {
-			return null;
-		}
+	makeStringSafe(unsafe: string): string {
+		return String(unsafe).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 	}
 
-	sendEmail(email: string, firstName: string, lastName: string, subject: string, emailBodyHTML: string, attachments: string[]) {
+	attachmentFromString(emailPreAttachment: EmailPreAttachment): EmailAttachment {
+		if (typeof emailPreAttachment.path === "string" && typeof emailPreAttachment.name === "string") {
+			let match = emailPreAttachment.path.match(/\/[^;]*;/);
+			if (match && typeof match === "object" && typeof match[0] === "string") {
+				return {
+					path: emailPreAttachment.path,
+					contentType: 'image' + match[0].slice(0, -1),
+					filename: emailPreAttachment.name + "." + match[0].slice(0, -1).slice(1)
+				};
+			}
+		}
+		return null;
+	}
+
+	sendEmail(email: string, subject: string, emailBodyHTML: string, inAttachments: EmailPreAttachment[]) {
 		let attachments = [];
-		for (const i = 0; i < attachments.length; i++) {
-			let out = this.generateFileFromString(attachments[i]);
+		for (let i = 0; i < inAttachments.length; i++) {
+			let out = this.attachmentFromString(inAttachments[i]);
 			if (out) {
 				attachments.push(out);
 			}
-		}
-		const params = {
-		  Destination: { 
-		    ToAddresses: [
-		      email,
-		    ]
-		  },
-		  Message: {
-		    Body: {
-		      Html: {
-		       Charset: "UTF-8",
-		       Data: emailBodyHTML
-		      },
-		      Text: {
-		       Charset: "UTF-8",
-		       Data: "this is the body"
-		      }
-		     },
-		     Subject: {
-		      Charset: 'UTF-8',
-		      Data: subject
-		     }
-		    },
-		  Source: 'noreply@blendtec.com',
-		};       
-		const sendPromise = new AWS.SES().sendEmail(params).promise();
+		}	
+		const textOnly = emailBodyHTML.replace(/<[^>]+>/g, '');
+		const mailOptions = {
+		    from: 'noreply@blendtec.com',
+		    subject: subject,
+		    text: textOnly,
+		    html: emailBodyHTML,
+		    to: email,
+		    attachments: attachments ? attachments : []
+		};
 
-		sendPromise.then(
-		  function(data) {
-		    console.log(data.MessageId);
-		  }).catch(
-		    function(err) {
-		    console.error(err, err.stack);
-		  });
+		const mail = mailcomposer(mailOptions);
+
+		mail.build((err, message) => {
+			const sendPromise = new AWS.SES().sendRawEmail({RawMessage: {Data: message}}).promise();
+			sendPromise.then(
+			  (data) => {
+			    console.log(data.MessageId);
+			  }).catch(
+			    (err) => {
+			    console.error(err, err.stack);
+			  });
+		}); 
 	}
-
-
 }
