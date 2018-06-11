@@ -45,10 +45,10 @@ export class Warranty {
 	@Column()
 	serial_number: string;
 
-	@Column({ length: 1 })
+	@Column({ length: 10 })
 	jar_size: string;
 
-	@Column({ length: 1 })
+	@Column({ length: 10 })
 	jar_number: string;
 
 	@Column({ length: 500 })
@@ -75,4 +75,11 @@ export class Warranty {
 	@Column({default: false})
 	processed: boolean;
 
+	serialnumber: string; //image
+
+	jarnumber: string; //image
+
+	problem: string; //image
+
+	receiptPhoto: string; //image
 }

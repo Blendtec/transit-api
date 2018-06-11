@@ -1,6 +1,7 @@
 import { Connection } from 'typeorm';
 import { Warranty } from './models/warranty.entity';
 import { WarrantyService } from './services/warranty.service';
+import { EmailService } from '../common/services/email.service';
 
 export const warrantyProviders = [
 	{
@@ -9,4 +10,5 @@ export const warrantyProviders = [
 		inject: ['DbConnectionToken'],
 	},
 	WarrantyService,
+	EmailService,
 ];
