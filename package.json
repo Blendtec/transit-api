@@ -21,6 +21,7 @@
     "@nestjs/typeorm": "^2.0.0",
     "@nestjs/websockets": "^4.5.8",
     "aws-sdk": "^2.243.1",
+    "body-parser": "^1.18.3",
     "class-transformer": "^0.1.9",
     "class-validator": "^0.8.1",
     "express": "^4.16.3",
