@@ -2,66 +2,66 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 
 @Entity()
 export class ProductRegistration {
-	@PrimaryGeneratedColumn()
-	id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-	@Column({ length: 500 })
-	firstName: string;
+    @Column({ length: 500 })
+    firstName: string;
 
-	@Column({ length: 500 })
-	lastName: string;
+    @Column({ length: 500 })
+    lastName: string;
 
-	@Column({ length: 500 })
-	addressOne: string;
+    @Column({ length: 500 })
+    addressOne: string;
 
-	@Column({ length: 500 })
-	addressTwo: string;
+    @Column({ length: 500 })
+    addressTwo: string;
 
-	@Column()
-	city: string;
+    @Column()
+    city: string;
 
-	@Column()
-	state: string;
+    @Column()
+    state: string;
 
-	@Column()
-	zip: string;
+    @Column()
+    zip: string;
 
-	@Column()
-	country: string;
+    @Column()
+    country: string;
 
-	@Column()
-	email: string;
+    @Column()
+    email: string;
 
-	@Column()
-	phone: string;
+    @Column()
+    phone: string;
 
-	@Column()
-	purchasePlace: string;
+    @Column()
+    purchasePlace: string;
 
-	@Column()
-	purchaseDate: string;
+    @Column()
+    purchaseDate: string;
 
-	@Column()
-	purchaseOther: string;
+    @Column()
+    purchaseOther: string;
 
-	@Column()
-	serialPrefix: string;
+    @Column()
+    serialPrefix: string;
 
-	@Column()
-	serialSuffix: string;
+    @Column()
+    serialSuffix: string;
 
-	@Column()
-	wantsOffers: boolean;
+    @Column()
+    wantsOffers: boolean;
 
-	@Column()
-	source: string;
+    @Column()
+    source: string;
 
-	@CreateDateColumn()
-	createdOn: string;
+    @CreateDateColumn()
+    createdOn: string;
 
-	@UpdateDateColumn()
-	modfiedOn: string;
+    @UpdateDateColumn()
+    modfiedOn: string;
 
-	@Column({default: false})
-	processed: boolean;
+    @Column({default: false})
+    isProcessed: boolean;
 }

@@ -4,9 +4,9 @@ import { DatabaseModule } from '../database';
 import { ProductRegistrationController } from './controllers/product-registration.controller';
 
 @Module({
-	imports: [DatabaseModule],
-	components: [...productRegistrationProviders],
-	exports: [...productRegistrationProviders],
-	controllers: [ProductRegistrationController],
+    imports: [DatabaseModule],
+    components: [...productRegistrationProviders],
+    exports: [...productRegistrationProviders],
+    controllers: [ProductRegistrationController],
 })
 export class ProductRegistrationModule {}

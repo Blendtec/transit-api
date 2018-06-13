@@ -3,83 +3,102 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateCol
 @Entity()
 export class Warranty {
 
-	@PrimaryGeneratedColumn()
-	id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-	@Column({ length: 20 })
-	first_name: string;
+    @Column({ length: 20 })
+    firstName: string;
 
-	@Column({ length: 40 })
-	last_name: string;
+    @Column({ length: 40 })
+    lastName: string;
 
-	@Column({ length: 100 })
-	street: string;
+    @Column({ length: 100 })
+    street: string;
 
-	@Column({ length: 50 })
-	city: string;
+    @Column({ length: 50 })
+    city: string;
 
-	@Column({ length: 20 })
-	state: string;
+    @Column({ length: 20 })
+    state: string;
 
-	@Column({ length: 11 })
-	zip_code: string;
+    @Column({ length: 11 })
+    zipCode: string;
 
-	@Column({ length: 20 })
-	phone_number: string;
+    @Column({ length: 20 })
+    phoneNumber: string;
 
-	@Column({ length: 50 })
-	email_address: string;
+    @Column({ length: 50 })
+    emailAddress: string;
 
-	@Column({ length: 20 })
-	country: string;
+    @Column({ length: 20 })
+    country: string;
 
-	@Column({ length: 10 })
-	preferred_contact_method: string;
+    @Column({ length: 10 })
+    contactMethod: string;
 
-	@Column({ length: 10 })
-	preferred_contact_time: string;
+    @Column({ length: 10 })
+    contactTime: string;
 
-	@Column({ length: 7 })
-	time_zone: string;
+    @Column({ length: 7 })
+    timeZone: string;
 
-	@Column()
-	serial_number: string;
+    @Column()
+    serialNumber: string;
 
-	@Column({ length: 10 })
-	jar_size: string;
+    @Column({ length: 10 })
+    jarSize: string;
 
-	@Column({ length: 10 })
-	jar_number: string;
+    @Column({ length: 10 })
+    jarNumber: string;
 
-	@Column({ length: 500 })
-	description: string;
+    @Column({ length: 500 })
+    description: string;
 
-	@Column({ length: 10 })
-	jar_sounds: string;
+    @Column({ length: 10 })
+    hasUnusualSounds: string;
 
-	@Column({ length: 10 })
-	smooth_spinning: string;
+    @Column({ length: 10 })
+    howToOwn: string;
 
-	@Column({ length: 10 })
-	wiggle_shaft: string;
+    @Column({ length: 10 })
+    isSmoothSpinning: string;
 
-	@Column({ length: 10 })
-	leaky_jar: string;
+    @Column({ length: 10 })
+    isShaftSecure: string;
 
-	@CreateDateColumn()
-	createdOn: string;
+    @Column({ length: 10 })
+    isLeakingJar: string;
 
-	@UpdateDateColumn()
-	modfiedOn: string;
+    @Column()
+    whichProblem: string;
 
-	@Column({default: false})
-	processed: boolean;
+    @CreateDateColumn()
+    createdOn: string;
 
-	serialnumber: string; //image
+    @UpdateDateColumn()
+    modfiedOn: string;
 
-	jarnumber: string; //image
+    @Column({default: false})
+    isProcessed: boolean;
 
-	problem: string; //image
+    @Column('datetime')
+    purchaseDate: string;
 
-	receiptPhoto: string; //image
+    @Column()
+    purchaseOther: string;
+
+    @Column()
+    purchasePlace: string;
+
+    @Column()
+    serialImage: string;
+
+    @Column()
+    jarNumberImage: string;
+
+    @Column()
+    problemImage: string;
+
+    @Column()
+    receiptImage: string;
 }

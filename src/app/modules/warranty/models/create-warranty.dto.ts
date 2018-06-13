@@ -1,87 +1,107 @@
-import { IsDateString, IsEmail, IsNotEmpty, IsString, Validate, IsNumber } from 'class-validator';
-import { IsCaptcha, SerialPrefix } from '../../common/validators';
-import { SerialPrefix as SP } from '../../serial-number/models/serial-prefix.entity';
+import { IsDateString, IsEmail, IsNotEmpty, IsString, IsOptional, Validate } from 'class-validator';
+import { IsCaptcha } from '../../common/validators';
+import { IsDataUrl } from '../../common/validators/isdata-url.validator';
 
 export class CreateWarrantyDto {
-	@IsString()
-	@IsNotEmpty()
-	first_name: string;
+    @IsString()
+    @IsNotEmpty()
+    firstName: string;
 
-	@IsString()
-	@IsNotEmpty()
-	last_name: string;
+    @IsString()
+    @IsNotEmpty()
+    lastName: string;
 
-	@IsString()
-	@IsNotEmpty()
-	street: string;
+    @IsString()
+    @IsNotEmpty()
+    street: string;
 
-	@IsString()
-	@IsNotEmpty()
-	city: string;
+    @IsString()
+    @IsNotEmpty()
+    city: string;
 
-	@IsString()
-	@IsNotEmpty()
-	state: string;
+    @IsString()
+    @IsNotEmpty()
+    state: string;
 
-	@IsString()
-	@IsNotEmpty()
-	zip_code: string;
+    @IsString()
+    @IsNotEmpty()
+    zipCode: string;
 
-	@IsNotEmpty()
-	phone_number: string;
+    @IsNotEmpty()
+    phoneNumber: string;
 
-	@IsEmail()
-	email_address: string;
+    @IsEmail()
+    emailAddress: string;
 
-	@IsString()
-	@IsNotEmpty()
-	country: string;
+    @IsString()
+    @IsNotEmpty()
+    country: string;
 
-	@IsString()
-	@IsNotEmpty()
-	preferred_contact_method: string;
+    @IsString()
+    @IsNotEmpty()
+    contactMethod: string;
 
-	@IsString()
-	@IsNotEmpty()
-	preferred_contact_time: string;
+    @IsString()
+    @IsNotEmpty()
+    contactTime: string;
 
-	@IsString()
-	@IsNotEmpty()
-	time_zone: string;
+    @IsString()
+    @IsNotEmpty()
+    timeZone: string;
 
-	@IsString()
-	@IsNotEmpty()
-	serial_number: string;
+    @IsString()
+    @IsNotEmpty()
+    serialNumber: string;
 
-	@IsString()
-	jar_size: string;
+    @IsString()
+    jarSize: string;
 
-	jar_number: string;
+    @IsString()
+    jarNumber: string;
 
-	@IsString()
-	@IsNotEmpty()
-	description: string;
+    @IsString()
+    @IsNotEmpty()
+    description: string;
 
-	@IsString()
-	jar_sounds: string;
+    @IsString()
+    whichProblem: string;
 
-	@IsString()
-	smooth_spinning: string;
+    @IsString()
+    hasUnusualSounds: string;
 
-	@IsString()
-	wiggle_shaft: string;
+    @IsString()
+    isSmoothSpinning: string;
 
-	@IsString()
-	leaky_jar: string;
+    @IsString()
+    isShaftSecure: string;
 
-	purchasePlace: string;
+    @IsString()
+    isLeakingJar: string;
 
-	@IsDateString()
-	purchaseDate: string;
+    purchasePlace: string;
 
-	purchaseOther: string;
+    @IsDateString()
+    purchaseDate: string;
 
-	@Validate(IsCaptcha)
-	@IsNotEmpty()
-	recaptcha: string;
+    purchaseOther: string;
+
+    @Validate(IsCaptcha)
+    @IsNotEmpty()
+    recaptcha: string;
+
+    @IsOptional()
+    @IsDataUrl()
+    serialImage: string;
+
+    @IsOptional()
+    @IsDataUrl()
+    jarNumberImage: string;
+
+    @IsOptional()
+    @IsDataUrl()
+    receiptImage: string;
+
+    @IsOptional()
+    @IsDataUrl()
+    problemImage: string;
 }

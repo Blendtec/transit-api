@@ -4,14 +4,14 @@ import { ProductRegistration } from '../models/product-registration.entity';
 
 @Component()
 export class ProductRegistrationService {
-	constructor(@Inject('ProductRegistrationRepositoryToken')
-		        private readonly productRegistrationRepository: Repository<ProductRegistration>) {}
+    constructor(@Inject('ProductRegistrationRepositoryToken')
+                private readonly productRegistrationRepository: Repository<ProductRegistration>) {}
 
-	async findAll(): Promise<ProductRegistration[]> {
-		return await this.productRegistrationRepository.find();
-	}
+    async findAll(): Promise<ProductRegistration[]> {
+        return await this.productRegistrationRepository.find();
+    }
 
-	async create(productRegistration: ProductRegistration): Promise<ProductRegistration> {
-		return await this.productRegistrationRepository.save(productRegistration);
-	}
+    async create(productRegistration: ProductRegistration): Promise<ProductRegistration> {
+        return await this.productRegistrationRepository.save(productRegistration);
+    }
 }

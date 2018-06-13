@@ -12,7 +12,7 @@
             true,
             "single"
         ],
-        "indent": false,
+        "indent": [true, "spaces"],
         "member-access": [
             false
         ],
@@ -25,7 +25,7 @@
         "member-ordering": [
             false
         ],
-        "curly": false,
+        "curly": [true],
         "interface-name": [
             false
         ],
@@ -33,10 +33,11 @@
             false
         ],
         "no-empty-interface": false,
-        "no-empty": false,
+        "no-empty": true,
         "arrow-parens": false,
         "object-literal-sort-keys": false,
-        "no-unused-expression": false,
+        "no-unused-expression": true,
+        "no-unused-variable": [true, "check-parameters"],
         "max-classes-per-file": [
             false
         ],
@@ -46,9 +47,7 @@
         "one-line": [
             false
         ],
-        "one-variable-per-declaration": [
-            false
-        ]
+        "one-variable-per-declaration": true
     },
     "rulesDirectory": []
 }
