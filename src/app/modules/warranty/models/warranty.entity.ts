@@ -73,16 +73,16 @@ export class Warranty {
     whichProblem: string;
 
     @CreateDateColumn()
-    createdOn: string;
+    createdOn: Date;
 
     @UpdateDateColumn()
-    modfiedOn: string;
+    modfiedOn: Date;
 
     @Column({default: false})
     isProcessed: boolean;
 
-    @Column('datetime')
-    purchaseDate: string;
+    @Column()
+    purchaseDate: Date;
 
     @Column()
     purchaseOther: string;
@@ -90,15 +90,15 @@ export class Warranty {
     @Column()
     purchasePlace: string;
 
-    @Column()
+    @Column('longtext')
     serialImage: string;
 
-    @Column()
+    @Column('longtext', {default: ''})
     jarNumberImage: string;
 
-    @Column()
+    @Column('longtext')
     problemImage: string;
 
-    @Column()
+    @Column('longtext', {default: ''})
     receiptImage: string;
 }

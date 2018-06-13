@@ -23,8 +23,9 @@ export class WarrantyEmail {
     }
 
     public get attachments(): EmailAttachment[] {
-        return this.imageFields.map((img, idx) => {
-            if (this.warranty.serialImage !== null) {
+        return this.imageFields
+        .map((img, idx) => {
+            if (img !== null && img !== '') {
                 const match = img.match(/\/[^;]*;/);
                 return {
                     path: img,
@@ -32,11 +33,11 @@ export class WarrantyEmail {
                     filename: 'attachment' + idx + '.' + match[0].slice(0, -1).slice(1),
                 };
             }
-        });
+        })
+        .filter(i => i);
     }
 
     private htmlEncode(input: string): string {
-        // TODO HtmlEncode?
         return String(input).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
@@ -77,7 +78,7 @@ export class WarrantyEmail {
                                 <br>
                                 <strong>Time Zone: </strong> ${ this.htmlEncode(this.warranty.timeZone)}
                                 <br>
-                                <strong>Began using the Blendtec around: </strong> ${ this.htmlEncode(this.warranty.purchaseDate)}
+                                <strong>Began using the Blendtec around: </strong> ${ this.htmlEncode(this.warranty.purchaseDate.toLocaleString())}
                                 <br>
                                 <br><br>
                                 <strong>Blender Information</strong>

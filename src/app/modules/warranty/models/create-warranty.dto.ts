@@ -81,7 +81,7 @@ export class CreateWarrantyDto {
     purchasePlace: string;
 
     @IsDateString()
-    purchaseDate: string;
+    purchaseDate: Date;
 
     purchaseOther: string;
 
