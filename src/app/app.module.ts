@@ -7,9 +7,10 @@ import { SerialNumberModule } from './modules/serial-number';
 import { DatabaseModule } from './modules/database';
 import { Validator } from 'class-validator';
 import { SerialPrefix } from './modules/common/validators/serial-prefix.validator';
+import { HttpModule } from '@nestjs/common/http';
 
 @Module({
-    imports: [ProductRegistrationModule, SerialNumberModule, WarrantyModule, CommonModule, DatabaseModule],
+    imports: [HttpModule, ProductRegistrationModule, SerialNumberModule, WarrantyModule, CommonModule, DatabaseModule],
     controllers: [AppController],
     components: [Validator, SerialPrefix],
 })

@@ -93,12 +93,12 @@ export class Warranty {
     @Column('longtext')
     serialImage: string;
 
-    @Column('longtext', {default: ''})
+    @Column('longtext')
     jarNumberImage: string;
 
     @Column('longtext')
     problemImage: string;
 
-    @Column('longtext', {default: ''})
+    @Column('longtext')
     receiptImage: string;
 }
