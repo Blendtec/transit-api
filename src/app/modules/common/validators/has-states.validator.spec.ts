@@ -1,6 +1,6 @@
 import { HasStates } from './has-states.validator';
 
-describe('IsCaptcha', () => {
+describe('HasStates', () => {
   let hasStates: HasStates;
 
   beforeEach(() => {
