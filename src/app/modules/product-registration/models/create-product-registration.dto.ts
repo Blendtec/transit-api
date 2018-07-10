@@ -1,5 +1,5 @@
 import { IsDateString, IsEmail, IsNotEmpty, IsString, Validate } from 'class-validator';
-import { IsCaptcha, SerialPrefix } from '../../common/validators';
+import { IsCaptcha, SerialPrefix, HasStates } from '../../common/validators';
 import { SerialPrefix as SP } from '../../serial-number/models/serial-prefix.entity';
 
 export class CreateProductRegistrationDto {
@@ -22,6 +22,7 @@ export class CreateProductRegistrationDto {
     city: string;
 
     @IsString()
+    @Validate(HasStates)
     state: string;
 
     @IsString()
