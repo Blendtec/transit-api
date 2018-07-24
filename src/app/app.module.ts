@@ -8,9 +8,18 @@ import { DatabaseModule } from './modules/database';
 import { Validator } from 'class-validator';
 import { SerialPrefix } from './modules/common/validators/serial-prefix.validator';
 import { HttpModule } from '@nestjs/common/http';
+import { VairaLogModule } from './modules/vaira-log/vaira-log-module';
 
 @Module({
-    imports: [HttpModule, ProductRegistrationModule, SerialNumberModule, WarrantyModule, CommonModule, DatabaseModule],
+    imports: [
+        HttpModule,
+        CommonModule,
+        DatabaseModule,
+        VairaLogModule,
+        ProductRegistrationModule,
+        SerialNumberModule,
+        WarrantyModule,
+    ],
     controllers: [AppController],
     components: [Validator, SerialPrefix],
 })

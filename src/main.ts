@@ -12,7 +12,8 @@ async function bootstrap() {
     app.use(bodyParser.json({limit: '10mb'}));
     app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
     app.use((req, res, next) => {
-        if (req.headers.origin === process.env.CLIENT_ORIGIN) {
+        const origins = process.env.CLIENT_ORIGIN.split(',');
+        if (origins.indexOf(req.headers.origin) >= 0) {
             res.header('Access-Control-Allow-Origin', req.headers.origin);
             res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         }
