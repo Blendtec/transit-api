@@ -1,44 +1,43 @@
 sudo: required
 dist: trusty
 git:
-    depth: 1
-    language: node_js
-    node_js:
-      - '6'
-    matrix:
-        fast_finish: true
-        cache:
-            directories:
-                - node_modules
-            env:
-                - ELASTIC_BEANSTALK_LABEL=$TRAVIS_BUILD_NUMBER
-            before_script:
-                - yarn lint
-            after_success:
-                - "./node_modules/.bin/codecov"
-            before_deploy:
-                - ./scripts/dist.sh
-            deploy:
-              - provider: elasticbeanstalk
-                skip_cleanup: true
-                access_key_id: $AWS_KEY
-                secret_access_key: $AWS_SECRET
-                region: $AWS_REGION
-                app: $EB_APP
-                env: $STAGE_EB_ENV
-                bucket_name: $STAGE_BUCKET
-                zip_file: ./dist/$npm_package_name.zip
-                on:
-                  branch: stage
-
-              - provider: elasticbeanstalk
-                skip_cleanup: true
-                access_key_id: $AWS_KEY
-                secret_access_key: $AWS_SECRET
-                region: $AWS_REGION
-                app: $EB_APP
-                env: $EB_ENV
-                bucket_name: $BUCKET
-                zip_file: ./dist/$npm_package_name.zip
-                on:
-                  branch: master
+  depth: 1
+language: node_js
+node_js:
+- '6'
+matrix:
+  fast_finish: true
+cache:
+  directories:
+  - node_modules
+env:
+  - ELASTIC_BEANSTALK_LABEL=$TRAVIS_BUILD_NUMBER
+before_script:
+  - yarn run lint
+after_success:
+  - "./node_modules/.bin/codecov"
+before_deploy:
+  - ./scripts/dist.sh
+deploy:
+  - provider: elasticbeanstalk
+    skip_cleanup: true
+    access_key_id: $AWS_KEY
+    secret_access_key: $AWS_SECRET
+    region: $AWS_REGION
+    app: $EB_APP
+    env: $STAGE_EB_ENV
+    bucket_name: $STAGE_BUCKET
+    zip_file: ./dist/$npm_package_name.zip
+    on:
+      branch: stage
+  - provider: elasticbeanstalk
+    skip_cleanup: true
+    access_key_id: $AWS_KEY
+    secret_access_key: $AWS_SECRET
+    region: $AWS_REGION
+    app: $EB_APP
+    env: $EB_ENV
+    bucket_name: $BUCKET
+    zip_file: ./dist/$npm_package_name.zip
+    on:
+      branch: master
