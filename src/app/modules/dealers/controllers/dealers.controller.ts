@@ -34,6 +34,6 @@ export class DealersController {
 
     @Get()
     allDealers(): Promise<Dealers[]> {
-    	return this.dealersService.findAll();
+        return this.dealersService.findAll();
     }
 }

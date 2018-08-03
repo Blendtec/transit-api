@@ -20,7 +20,7 @@ import { VairaLogModule } from './modules/vaira-log/vaira-log-module';
         ProductRegistrationModule,
         SerialNumberModule,
         WarrantyModule,
-        DealersModule
+        DealersModule,
     ],
     controllers: [AppController],
     components: [Validator, SerialPrefix],

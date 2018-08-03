@@ -10,7 +10,7 @@ export class Dealers {
     name: string;
 
     @Column({default: ''})
-    native_name: string; 
+    native_name: string;
 
     @Column({default: ''})
     street_address: string;
