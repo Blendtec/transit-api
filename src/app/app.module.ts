@@ -8,9 +8,10 @@ import { DatabaseModule } from './modules/database';
 import { Validator } from 'class-validator';
 import { SerialPrefix } from './modules/common/validators/serial-prefix.validator';
 import { HttpModule } from '@nestjs/common/http';
+import { DealersModule } from './modules/dealers/dealers.module';
 
 @Module({
-    imports: [HttpModule, ProductRegistrationModule, SerialNumberModule, WarrantyModule, CommonModule, DatabaseModule],
+    imports: [HttpModule, ProductRegistrationModule, SerialNumberModule, WarrantyModule, CommonModule, DatabaseModule, DealersModule],
     controllers: [AppController],
     components: [Validator, SerialPrefix],
 })
