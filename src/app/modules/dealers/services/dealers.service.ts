@@ -3,6 +3,7 @@ import { Repository } from 'typeorm';
 import { Dealers } from '../models/dealers.entity';
 import { MysqlEscape } from '../../common/services/mysql-escape.service';
 import { countryCode } from '../../common/enums/country-code.enum';
+import { sellerTypes } from '../../common/enums/seller-type.enum';
 
 @Component()
 export class DealersService {
@@ -26,9 +27,9 @@ export class DealersService {
     async residentialStateRep(state, dealerRep): Promise<Dealers[]> {
         state = this.mysqlEscape.mysqlStringEscape(state);
         let isRep = null;
-        if (dealerRep === 'dealer') {
+        if (dealerRep === sellerTypes.dealer) {
             isRep = 0;
-        } else if (dealerRep === 'rep') {
+        } else if (dealerRep === sellerTypes.representative) {
             isRep = 1;
         } else {
             return this.residentialState(state);
