@@ -46,7 +46,7 @@ export class CreateProductRegistrationDto {
 
     purchaseOther: string;
 
-    @Validate(SerialPrefix, [SP])
+   @Validate(SerialPrefix, [SP])
     serialPrefix: string;
 
     serialSuffix: string;
