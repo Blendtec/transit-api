@@ -1,6 +1,8 @@
 import { Test } from '@nestjs/testing';
 import { TestingModule } from '@nestjs/testing/testing-module';
 import { DealersService } from './dealers.service';
+import { MysqlEscape } from '../../common/services/mysql-escape.service';
+import { countryCode } from '../../common/enums/country-code.enum';
 
 describe('DealersService', () => {
     let module: TestingModule;
@@ -14,12 +16,13 @@ describe('DealersService', () => {
         newModel = {};
         repoMock = {
             find: jest.fn(),
-            query: jest.fn()
+            createQueryBuilder: jest.fn()
         };
         module = await Test.createTestingModule({
             components: [
                 DealersService,
                 {provide: 'DealersRepositoryToken', useValue: repoMock},
+                MysqlEscape,
             ],
         }).compile();
 
@@ -38,51 +41,28 @@ describe('DealersService', () => {
         });
     });
 
-    describe('mysql_real_escape_string', () => {
-
-        it('should escape special characters', () => {
-            const escaped = service.mysql_real_escape_string(`"'%\r\n`);
-            expect(escaped).toBe("\\\"\\'\\%\\r\\n");
-        });
-    });
-
     describe('findAllResidential', () => {
 
-        it('should call find on repository with country_code = \'US\'', async () => {
+        it('should call find on repository with countryCode = \'US\'', async () => {
             await service.findAllResidential();
-            expect(repoMock.find).toHaveBeenCalledWith({country_code: 'US'});
+            expect(repoMock.find).toHaveBeenCalledWith({countryCode: 'US'});
         });
     });
 
     describe('residentialState', () => {
 
-        it('should call find on repository with country_code = \'US\' and state = \'state-CA\'', async () => {
+        it('should call find on repository with countryCode = \'US\' and state = \'state-CA\'', async () => {
             await service.residentialState('CA');
-            expect(repoMock.find).toHaveBeenCalledWith({country_code: 'US', locations: 'state-CA'});
+            expect(repoMock.find).toHaveBeenCalledWith({countryCode: 'US', locations: 'state-CA'});
         });
     });
 
     describe('residentialStateRep', () => {
 
-        it('should call find on repository with country_code = \'US\' and state = \'state-CA\' and isRep = 1', async () => {
+        it('should call find on repository with countryCode = \'US\' and state = \'state-CA\' and isRep = 1', async () => {
             await service.residentialStateRep('CA', 'rep');
-            expect(repoMock.find).toHaveBeenCalledWith({country_code: 'US', locations: 'state-CA', isRep: 1});
+            expect(repoMock.find).toHaveBeenCalledWith({countryCode: 'US', locations: 'state-CA', isRep: 1});
         });
     });
 
-    describe('findAllInternational', () => {
-
-        it('should call query on repository with SELECT * FROM transit.dealers WHERE country_code != "US"', async () => {
-            await service.findAllInternational();
-            expect(repoMock.query).toHaveBeenCalledWith('SELECT * FROM transit.dealers WHERE country_code != "US"');
-        });
-    });
-
-    describe('findInternationalState', () => {
-
-        it('should call query on repository with SELECT * FROM transit.dealers WHERE country_code != "US" AND locations = \'country-DE\'', async () => {
-            await service.findInternationalState('DE');
-            expect(repoMock.query).toHaveBeenCalledWith('SELECT * FROM transit.dealers WHERE country_code != "US" AND locations = \'country-DE\'');
-        });
-    });
 });

@@ -10,13 +10,13 @@ export class Dealers {
     name: string;
 
     @Column({default: ''})
-    native_name: string;
+    nativeName: string;
 
     @Column({default: ''})
-    street_address: string;
+    streetAddress: string;
 
     @Column({default: ''})
-    native_street_address: string;
+    nativeStreetAddress: string;
 
     @Column({default: ''})
     address1: string;
@@ -46,7 +46,7 @@ export class Dealers {
     fax: string;
 
     @Column({default: ''})
-    country_code: string;
+    countryCode: string;
 
     @Column({default: false})
     isRep: boolean;
@@ -58,7 +58,7 @@ export class Dealers {
     linkText: string;
 
     @Column({default: ''})
-    registration_uri: string;
+    registrationUri: string;
 
     @Column({default: ''})
     contact: string;
