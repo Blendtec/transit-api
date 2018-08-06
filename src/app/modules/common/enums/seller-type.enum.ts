@@ -1,4 +1,4 @@
 export enum sellerTypes {
-   dealer = 'dealer',
-   representative = 'rep',
+   DEALER = 'dealer',
+   REPRESENTATIVE = 'rep',
 }

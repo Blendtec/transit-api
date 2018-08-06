@@ -27,9 +27,9 @@ export class DealersService {
     async residentialStateRep(state, dealerRep): Promise<Dealers[]> {
         state = this.mysqlEscape.mysqlStringEscape(state);
         let isRep = null;
-        if (dealerRep === sellerTypes.dealer) {
+        if (dealerRep === sellerTypes.DEALER) {
             isRep = 0;
-        } else if (dealerRep === sellerTypes.representative) {
+        } else if (dealerRep === sellerTypes.REPRESENTATIVE) {
             isRep = 1;
         } else {
             return this.residentialState(state);
