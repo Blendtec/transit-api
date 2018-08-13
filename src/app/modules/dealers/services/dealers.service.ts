@@ -45,10 +45,7 @@ export class DealersService {
 
     async findInternationalState(country): Promise<Dealers[]> {
         country = this.mysqlEscape.mysqlStringEscape(country);
-        return await this.dealersRepository.createQueryBuilder()
-                    .where(`countryCode != :US`, {US: countryCode.RESIDENTIAL_COUNTRY})
-                    .where(`locations = :country`, {country: countryCode.COUNTRY + country})
-                    .getMany();
+        return await this.dealersRepository.find({locations: countryCode.COUNTRY + country});
     }
 
 }
