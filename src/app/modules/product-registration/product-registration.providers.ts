@@ -1,6 +1,7 @@
 import { Connection } from 'typeorm';
 import { ProductRegistration } from './models/product-registration.entity';
 import { ProductRegistrationService } from './services/product-registration.service';
+import { ProductRegistrationEmailService } from './services/product-registration-email.service';
 
 export const productRegistrationProviders = [
     {
@@ -9,4 +10,5 @@ export const productRegistrationProviders = [
         inject: ['DbConnectionToken'],
     },
     ProductRegistrationService,
+    ProductRegistrationEmailService,
 ];
