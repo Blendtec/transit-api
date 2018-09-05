@@ -1,5 +1,4 @@
-import { IsDateString, IsEmail, IsNotEmpty, IsString, IsOptional, Validate } from 'class-validator';
-import { IsCaptcha } from '../../common/validators';
+import { IsDateString, IsEmail, IsNotEmpty, IsString, IsOptional } from 'class-validator';
 import { IsDataUrl } from '../../common/validators/isdata-url.validator';
 
 export class CreateWarrantyDto {
@@ -84,10 +83,6 @@ export class CreateWarrantyDto {
     purchaseDate: Date;
 
     purchaseOther: string;
-
-    @Validate(IsCaptcha)
-    @IsNotEmpty()
-    recaptcha: string;
 
     @IsOptional()
     @IsDataUrl()
