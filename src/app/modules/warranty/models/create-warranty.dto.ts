@@ -1,4 +1,4 @@
-import { IsDateString, IsEmail, IsNotEmpty, IsString, IsOptional, Validate } from 'class-validator';
+import { IsDateString, IsEmail, IsNotEmpty, IsString, IsOptional } from 'class-validator';
 import { IsDataUrl } from '../../common/validators/isdata-url.validator';
 
 export class CreateWarrantyDto {
