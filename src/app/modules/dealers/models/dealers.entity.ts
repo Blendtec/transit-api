@@ -62,4 +62,10 @@ export class Dealers {
 
     @Column({default: ''})
     contact: string;
+
+    @Column({default: ''})
+    type: string;
+
+    @Column({default: ''})
+    accountnumber: string;
 }
