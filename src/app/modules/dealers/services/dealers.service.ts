@@ -21,7 +21,7 @@ export class DealersService {
 
     async residentialState(state): Promise<Dealers[]> {
         state = this.mysqlEscape.mysqlStringEscape(state);
-        return await this.dealersRepository.find({countryCode: countryCode.RESIDENTIAL_COUNTRY, locations: countryCode.STATE + state});
+        return await this.dealersRepository.find({countryCode: countryCode.RESIDENTIAL_COUNTRY, stateCode: state});
     }
 
     async residentialStateRep(state, dealerRep): Promise<Dealers[]> {
@@ -34,7 +34,7 @@ export class DealersService {
         } else {
             return this.residentialState(state);
         }
-        return await this.dealersRepository.find({countryCode: countryCode.RESIDENTIAL_COUNTRY, locations: countryCode.STATE + state, isRep});
+        return await this.dealersRepository.find({countryCode: countryCode.RESIDENTIAL_COUNTRY, stateCode: state, isRep});
     }
 
     async findAllInternational(): Promise<Dealers[]> {
@@ -45,7 +45,7 @@ export class DealersService {
 
     async findInternationalState(country): Promise<Dealers[]> {
         country = this.mysqlEscape.mysqlStringEscape(country);
-        return await this.dealersRepository.find({locations: countryCode.COUNTRY + country});
+        return await this.dealersRepository.find({countryCode: country});
     }
 
 }
