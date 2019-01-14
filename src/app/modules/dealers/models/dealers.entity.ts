@@ -68,4 +68,7 @@ export class Dealers {
 
     @Column({default: ''})
     accountnumber: string;
+
+    @Column({default: true})
+    isActive: boolean;
 }
