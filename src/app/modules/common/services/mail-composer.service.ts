@@ -1,3 +1,4 @@
+// @format
 import { Component } from '@nestjs/common';
 import * as mailcomposer from 'mailcomposer';
 

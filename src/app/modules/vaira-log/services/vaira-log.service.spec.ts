@@ -1,3 +1,4 @@
+// @format
 import { Test } from '@nestjs/testing';
 import { TestingModule } from '@nestjs/testing/testing-module';
 import { VairaLogService } from './vaira-log.service';
@@ -18,7 +19,7 @@ describe('VairaLogService', () => {
         module = await Test.createTestingModule({
             components: [
                 VairaLogService,
-                {provide: 'VairaLogRepositoryToken', useValue: repoMock},
+                { provide: 'VairaLogRepositoryToken', useValue: repoMock },
             ],
         }).compile();
 
@@ -30,7 +31,6 @@ describe('VairaLogService', () => {
     });
 
     describe('findAll', () => {
-
         it('should call find on repository', async () => {
             await service.findAll();
             expect(repoMock.find).toHaveBeenCalled();

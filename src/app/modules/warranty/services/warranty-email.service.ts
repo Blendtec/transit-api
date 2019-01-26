@@ -1,3 +1,4 @@
+// @format
 import { WarrantyEmail } from './../models/warranty-email.model';
 import { Warranty } from './../models/warranty.entity';
 import { EmailService } from './../../common/services/email.service';

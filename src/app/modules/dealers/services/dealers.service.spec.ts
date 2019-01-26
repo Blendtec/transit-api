@@ -45,7 +45,7 @@ describe('DealersService', () => {
 
         it('should call find on repository with countryCode = \'USA\'', async () => {
             await service.findAllResidential();
-            expect(repoMock.find).toHaveBeenCalledWith({countryCode: 'USA'});
+            expect(repoMock.find).toHaveBeenCalledWith({countryCode: 'USA', isActive: true});
         });
     });
 
@@ -53,7 +53,7 @@ describe('DealersService', () => {
 
         it('should call find on repository with countryCode = \'USA\' and state = \'CA\'', async () => {
             await service.residentialState('CA');
-            expect(repoMock.find).toHaveBeenCalledWith({countryCode: 'USA', stateCode: 'CA'});
+            expect(repoMock.find).toHaveBeenCalledWith({countryCode: 'USA', isActive: true, stateCode: 'CA'});
         });
     });
 
@@ -61,7 +61,7 @@ describe('DealersService', () => {
 
         it('should call find on repository with countryCode = \'USA\' and state = \'CA\' and isRep = 1', async () => {
             await service.residentialStateRep('CA', 'rep');
-            expect(repoMock.find).toHaveBeenCalledWith({countryCode: 'USA', stateCode: 'CA', isRep: 1});
+            expect(repoMock.find).toHaveBeenCalledWith({countryCode: 'USA', stateCode: 'CA', isActive: true, isRep: 1});
         });
     });
 

@@ -1,3 +1,4 @@
+// @format
 import { IsDateString, IsEmail, IsNotEmpty, IsString, IsOptional } from 'class-validator';
 import { IsDataUrl } from '../../common/validators/isdata-url.validator';
 

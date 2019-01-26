@@ -1,3 +1,4 @@
+// @format
 import { Controller, Get } from '@nestjs/common';
 import { SerialPrefix } from '../models/serial-prefix.entity';
 import { SerialPrefixService } from '../services/serial-prefix.service';

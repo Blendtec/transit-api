@@ -1,8 +1,16 @@
-import { IsInt, IsEmail, IsNotEmpty, IsString, IsNumber, IsPositive, IsDateString } from 'class-validator';
+// @format
+import {
+    IsInt,
+    IsEmail,
+    IsNotEmpty,
+    IsString,
+    IsNumber,
+    IsPositive,
+    IsDateString,
+} from 'class-validator';
 import { Transform } from 'class-transformer';
 
 export class CreateVairaLogDto {
-
     @IsString()
     @IsEmail()
     user: string;

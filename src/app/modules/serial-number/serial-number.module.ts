@@ -1,3 +1,4 @@
+// @format
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../database';
 import { SerialNumberController } from './controllers/serial-number.controller';

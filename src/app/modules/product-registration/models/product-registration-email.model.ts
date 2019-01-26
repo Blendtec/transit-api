@@ -1,8 +1,8 @@
+// @format
 import { ProductRegistration } from './product-registration.entity';
 
 export class ProductRegistrationEmail {
-
-    constructor(private readonly productRegistration: ProductRegistration) { }
+    constructor(private readonly productRegistration: ProductRegistration) {}
 
     public get to(): string {
         return this.productRegistration.email;
@@ -13,12 +13,17 @@ export class ProductRegistrationEmail {
     }
 
     public get body(): string {
-      /* tslint:disable */
+        /* tslint:disable */
         return `<table width='100%'>
                     <tbody>
                         <tr>
                             <td>
-                                <img align='center' alt='' src='https://s3.amazonaws.com/blendtec.com/external/img/logo_blendtec.jpg' width='199' style='max-width:199px;padding-bottom:0;vertical-align:bottom' class='CToWUd'>
+                                <img  align='center' 
+                                      alt='' 
+                                      src='https://s3.amazonaws.com/blendtec.com/external/img/logo_blendtec.jpg' 
+                                      width='199' 
+                                      style='max-width:199px;padding-bottom:0;vertical-align:bottom' 
+                                      class='CToWUd'>
                             </td>
                         </tr>
                         <tr>
@@ -34,7 +39,11 @@ export class ProductRegistrationEmail {
                                     Hi ${this.productRegistration.firstName},
                                 </p>
                                 <p>
-                                    Congratulations! Your Product with serial number ${this.productRegistration.serialPrefix}-${this.productRegistration.serialSuffix} has been successfully registered on <a href="https://www.blendtec.com">blendtec.com</a>.
+                                    Congratulations! Your Product with serial number ${
+                                        this.productRegistration.serialPrefix
+                                    }-${
+            this.productRegistration.serialSuffix
+        } has been successfully registered on <a href="https://www.blendtec.com">blendtec.com</a>.
                                 </p>
                                 <p>
                                     As a member of the Blendtec family, feel free to <a href="https://www.blendtec.com/contact"> contact us</a> with any questions, concerns, or needs for repair.
@@ -49,6 +58,6 @@ export class ProductRegistrationEmail {
                         </tr>
                     </tbody>
                 </table>`;
-    /* tslint:enable */
+        /* tslint:enable */
     }
 }

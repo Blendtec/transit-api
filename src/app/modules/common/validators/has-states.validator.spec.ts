@@ -1,3 +1,4 @@
+// @format
 import { HasStates } from './has-states.validator';
 
 describe('HasStates', () => {

@@ -1,3 +1,4 @@
+// @format
 import { Test } from '@nestjs/testing';
 import { TestingModule } from '@nestjs/testing/testing-module';
 import { ProductRegistrationService } from './product-registration.service';

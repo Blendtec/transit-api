@@ -1,5 +1,6 @@
+// @format
 export enum countryCode {
-   RESIDENTIAL_COUNTRY = 'USA',
-   STATE = '',
-   COUNTRY = '',
+    RESIDENTIAL_COUNTRY = 'USA',
+    STATE = '',
+    COUNTRY = '',
 }

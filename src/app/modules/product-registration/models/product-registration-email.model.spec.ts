@@ -1,3 +1,4 @@
+// @format
 import { plainToClass } from 'class-transformer';
 import { ProductRegistrationEmail } from './product-registration-email.model';
 import { ProductRegistration } from './product-registration.entity';
