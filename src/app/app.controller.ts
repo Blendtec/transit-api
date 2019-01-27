@@ -1,9 +1,10 @@
-import { Get, Controller } from '@nestjs/common';
+import { HttpStatus } from '@nestjs/common';
+import { Get, Controller, Res } from '@nestjs/common';
 
 @Controller()
 export class AppController {
     @Get()
-    root(): string {
-        return 'Hello World!';
+    root(@Res() res): any {
+        res.status(HttpStatus.OK).send();
     }
 }
