@@ -1,4 +1,5 @@
+// @format
 export enum sellerTypes {
-   DEALER = 'dealer',
-   REPRESENTATIVE = 'rep',
+    DEALER = 'dealer',
+    REPRESENTATIVE = 'rep',
 }

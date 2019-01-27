@@ -1,3 +1,4 @@
+// @format
 import { Component, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { VairaLog } from '../models/vaira-log.entity';

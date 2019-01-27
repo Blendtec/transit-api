@@ -39,6 +39,7 @@ export class DealersService {
     } else {
       return this.residentialState(state);
     }
+<<<<<<< HEAD
     return await this.dealersRepository.find({
       countryCode: countryCode.RESIDENTIAL_COUNTRY,
       stateCode: state,
@@ -59,3 +60,36 @@ export class DealersService {
     return await this.dealersRepository.find({countryCode: country, isActive: true});
   }
 }
+=======
+
+    async residentialState(state): Promise<Dealers[]> {
+        state = this.mysqlEscape.mysqlStringEscape(state);
+        return await this.dealersRepository.find({countryCode: countryCode.RESIDENTIAL_COUNTRY, stateCode: state});
+    }
+
+    async residentialStateRep(state, dealerRep): Promise<Dealers[]> {
+        state = this.mysqlEscape.mysqlStringEscape(state);
+        let isRep = null;
+        if (dealerRep === sellerTypes.DEALER) {
+            isRep = 0;
+        } else if (dealerRep === sellerTypes.REPRESENTATIVE) {
+            isRep = 1;
+        } else {
+            return this.residentialState(state);
+        }
+        return await this.dealersRepository.find({countryCode: countryCode.RESIDENTIAL_COUNTRY, stateCode: state, isRep});
+    }
+
+    async findAllInternational(): Promise<Dealers[]> {
+        return await this.dealersRepository.createQueryBuilder()
+                    .where(`countryCode != :US`, {US: countryCode.RESIDENTIAL_COUNTRY})
+                    .getMany();
+    }
+
+    async findInternationalState(country): Promise<Dealers[]> {
+        country = this.mysqlEscape.mysqlStringEscape(country);
+        return await this.dealersRepository.find({countryCode: country});
+    }
+
+}
+>>>>>>> develop

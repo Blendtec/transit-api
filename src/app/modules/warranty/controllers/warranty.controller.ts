@@ -1,3 +1,4 @@
+// @format
 import { Controller, Post, Body } from '@nestjs/common';
 import { Warranty } from '../models/warranty.entity';
 import { WarrantyService } from '../services/warranty.service';

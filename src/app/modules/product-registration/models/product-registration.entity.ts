@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+// @format
+import {
+    Entity,
+    Column,
+    PrimaryGeneratedColumn,
+    CreateDateColumn,
+    UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class ProductRegistration {
@@ -62,6 +69,6 @@ export class ProductRegistration {
     @UpdateDateColumn()
     modfiedOn: string;
 
-    @Column({default: false})
+    @Column({ default: false })
     isProcessed: boolean;
 }

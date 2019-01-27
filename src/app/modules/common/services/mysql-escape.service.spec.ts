@@ -1,3 +1,4 @@
+// @format
 import { Test } from '@nestjs/testing';
 import { MysqlEscape } from './mysql-escape.service';
 

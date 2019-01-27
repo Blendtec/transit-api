@@ -1,10 +1,10 @@
+// @format
 import { Component } from '@nestjs/common';
 
 @Component()
 export class MysqlEscape {
-
     public mysqlStringEscape(str: string) {
-        return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, (char) => {
+        return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, char => {
             switch (char) {
                 case '\0':
                     return '\\0';
@@ -18,7 +18,7 @@ export class MysqlEscape {
                     return '\\n';
                 case '\r':
                     return '\\r';
-                case '\"':
+                case '"':
                 case `'`:
                 case '\\':
                 case '%':

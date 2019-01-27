@@ -1,3 +1,4 @@
+// @format
 import { Module } from '@nestjs/common';
 import { CommonModule } from '../common';
 import { warrantyProviders } from './warranty.providers';

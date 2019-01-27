@@ -1,3 +1,4 @@
+// @format
 import { SESService } from './../../common/services/ses.service';
 import { EmailService } from './../../common/services/email.service';
 import { Test } from '@nestjs/testing';
@@ -27,8 +28,11 @@ describe('WarrantyService', () => {
                 SESService,
                 EmailService,
                 WarrantyService,
-                {provide: WarrantyEmailService, useValue: {send: jest.fn()}},
-                {provide: 'WarrantyRepositoryToken', useValue: repoMock},
+                {
+                    provide: WarrantyEmailService,
+                    useValue: { send: jest.fn() },
+                },
+                { provide: 'WarrantyRepositoryToken', useValue: repoMock },
             ],
         }).compile();
 
@@ -40,7 +44,6 @@ describe('WarrantyService', () => {
     });
 
     describe('create', () => {
-
         it('should call save on repository', async () => {
             await service.create(dto);
             expect(repoMock.save).toHaveBeenCalledWith(dto);
@@ -50,6 +53,5 @@ describe('WarrantyService', () => {
             const result = await service.create(dto);
             expect(result).toEqual(newModel);
         });
-
     });
 });

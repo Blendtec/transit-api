@@ -1,4 +1,11 @@
-import { IsDateString, IsEmail, IsNotEmpty, IsString, Validate } from 'class-validator';
+// @format
+import {
+    IsDateString,
+    IsEmail,
+    IsNotEmpty,
+    IsString,
+    Validate,
+} from 'class-validator';
 import { IsCaptcha, SerialPrefix, HasStates } from '../../common/validators';
 import { SerialPrefix as SP } from '../../serial-number/models/serial-prefix.entity';
 
@@ -46,7 +53,7 @@ export class CreateProductRegistrationDto {
 
     purchaseOther: string;
 
-   @Validate(SerialPrefix, [SP])
+    @Validate(SerialPrefix, [SP])
     serialPrefix: string;
 
     serialSuffix: string;

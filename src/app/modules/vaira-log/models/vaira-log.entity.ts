@@ -1,18 +1,24 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+// @format
+import {
+    Entity,
+    Column,
+    PrimaryGeneratedColumn,
+    CreateDateColumn,
+    UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class VairaLog {
-
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
     user: string;
 
-    @Column('decimal', {precision: 5, scale: 3})
+    @Column('decimal', { precision: 5, scale: 3 })
     startWeight: number;
 
-    @Column('decimal', {precision: 5, scale: 3})
+    @Column('decimal', { precision: 5, scale: 3 })
     endWeight: number;
 
     @Column()
@@ -32,5 +38,4 @@ export class VairaLog {
 
     @UpdateDateColumn()
     modfiedOn: string;
-
 }

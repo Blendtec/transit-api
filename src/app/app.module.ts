@@ -25,5 +25,4 @@ import { VairaLogModule } from './modules/vaira-log/vaira-log-module';
     controllers: [AppController],
     components: [Validator, SerialPrefix],
 })
-export class ApplicationModule {
-}
+export class ApplicationModule {}

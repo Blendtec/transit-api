@@ -1,3 +1,4 @@
+// @format
 import { EmailAttachment } from './../../common/models/email-attachment.interface';
 import { Warranty } from './warranty.entity';
 

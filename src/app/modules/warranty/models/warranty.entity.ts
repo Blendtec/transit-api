@@ -1,8 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+// @format
+import {
+    Entity,
+    Column,
+    PrimaryGeneratedColumn,
+    CreateDateColumn,
+    UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class Warranty {
-
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -78,7 +84,7 @@ export class Warranty {
     @UpdateDateColumn()
     modfiedOn: Date;
 
-    @Column({default: false})
+    @Column({ default: false })
     isProcessed: boolean;
 
     @Column()

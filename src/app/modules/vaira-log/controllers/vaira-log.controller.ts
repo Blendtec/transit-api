@@ -1,3 +1,4 @@
+// @format
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { VairaLog } from '../models/vaira-log.entity';
 import { VairaLogService } from '../services/vaira-log.service';
