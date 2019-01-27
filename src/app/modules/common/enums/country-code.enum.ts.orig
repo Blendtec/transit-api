@@ -1,0 +1,12 @@
+// @format
+export enum countryCode {
+<<<<<<< HEAD
+    RESIDENTIAL_COUNTRY = 'USA',
+    STATE = '',
+    COUNTRY = '',
+=======
+   RESIDENTIAL_COUNTRY = 'USA',
+   STATE = '',
+   COUNTRY = '',
+>>>>>>> develop
+}
